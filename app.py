@@ -8,12 +8,14 @@ mode for pointing the camera at things instead of speaking about them.
 
 Run:  streamlit run app.py
 """
+
 import datetime as dt
 import pandas as pd
 import streamlit as st
 
 from ai_utils import generate_phrase, describe_scene
 from tts_utils import speak
+
 
 st.set_page_config(
     page_title="Audio-Accessibility Communicator",
@@ -42,6 +44,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+
 if "log" not in st.session_state:
     
     st.session_state.log = pd.DataFrame(
@@ -59,7 +62,7 @@ if "custom_phrases" not in st.session_state:
 
 if "location" not in st.session_state:
     
-    st.session_state.location = {"lat": 67, "lon": 67}
+    st.session_state.location = {"lat": 0, "lon": 0}
 
 
 def log_phrase(category: str, phrase: str) -> None:
@@ -79,7 +82,10 @@ def say(category: str, phrase: str) -> None:
 
 
 
-st.title("🔊 Audio-Accessibility Communicator")
+st.markdown(
+    '<h1 style="color:#d32f2f;">🔊 Audio-Accessibility Communicator</h1>',
+    unsafe_allow_html=True,
+)
 st.caption("Tap a button. It speaks for you — instantly.")
 
 log_df = st.session_state.log
@@ -98,7 +104,9 @@ col4.metric("Custom phrases saved", len(st.session_state.custom_phrases))
 
 st.divider()
 
-
+# --------------------------------------------------------------------------
+# Emergency grid
+# --------------------------------------------------------------------------
 st.subheader("🚨 Emergency")
 emergency_phrases = [
     ("Call 911", "Please call 911 right now, this is an emergency."),
@@ -117,7 +125,9 @@ for col, (label, phrase) in zip(e_cols, emergency_phrases):
 
 st.divider()
 
-
+# --------------------------------------------------------------------------
+# Daily communication grid
+# --------------------------------------------------------------------------
 st.subheader("💬 Daily Communication")
 daily_phrases = [
     ("Yes", "Yes."),
@@ -139,7 +149,9 @@ for row in rows:
 
 st.divider()
 
-
+# --------------------------------------------------------------------------
+# Custom phrases (user-editable quick-access grid)
+# --------------------------------------------------------------------------
 st.subheader("⭐ My Custom Phrases")
 c_cols = st.columns(4)
 for i, row in st.session_state.custom_phrases.iterrows():
@@ -162,7 +174,7 @@ with st.expander("Edit my custom phrases"):
 st.divider()
 
 # --------------------------------------------------------------------------
-# AI phrase generator (Gemini text) 
+# AI phrase generator (Gemini text) — wrapped in st.form to avoid firing an API call on every keystroke.
 # --------------------------------------------------------------------------
 st.subheader("🤖 AI Phrase Generator")
 st.caption("Describe what you want to say in a few words — Gemini turns it into a clean, speakable sentence.")
@@ -208,8 +220,22 @@ st.divider()
 # --------------------------------------------------------------------------
 st.subheader("📍 Share My Location")
 lcol1, lcol2, lcol3 = st.columns([1, 1, 2])
-lat = lcol1.number_input("Latitude", value=st.session_state.location["lat"], format="%.4f")
-lon = lcol2.number_input("Longitude", value=st.session_state.location["lon"], format="%.4f")
+lat = lcol1.number_input(
+    "Latitude",
+    value=float(st.session_state.location["lat"]),
+    min_value=-90.0,
+    max_value=90.0,
+    step=0.0001,
+    format="%.4f",
+)
+lon = lcol2.number_input(
+    "Longitude",
+    value=float(st.session_state.location["lon"]),
+    min_value=-180.0,
+    max_value=180.0,
+    step=0.0001,
+    format="%.4f",
+)
 st.session_state.location = {"lat": lat, "lon": lon}
 if lcol3.button("Announce my location", use_container_width=True):
     say("Location", f"My current location is latitude {lat}, longitude {lon}. Please come find me.")
