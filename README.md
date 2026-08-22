@@ -13,7 +13,7 @@
 
 ![Audio-Accessibility Communicator](https://img.shields.io/badge/Audio--Accessibility-Communicator-d32f2f?style=for-the-badge)
 
-> **Live demo:** `    `
+> **Live demo:** `https://audio-accessibility-communicator-aac.streamlit.app/ `
 > **Author:** Caleb John Daniel Balakumar 
 
 ---
