@@ -1,10 +1,7 @@
 """
 Audio-Accessibility Communicator
 =================================
-An AAC (Augmentative and Alternative Communication) dashboard for people
-with temporary vocal loss. Big touch-friendly buttons trigger instant
-text-to-speech; Gemini adds AI-generated custom phrases and a vision
-mode for pointing the camera at things instead of speaking about them.
+An AAC (Augmentative and Alternative Communication) dashboard for mute individuals and people with temporary vocal loss. Big touch-friendly buttons trigger instant text-to-speech; Gemini adds AI-generated custom phrases and a vision mode for pointing the camera at things instead of speaking about them.
 
 Run:  streamlit run app.py
 """
