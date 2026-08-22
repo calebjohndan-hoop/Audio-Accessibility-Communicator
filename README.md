@@ -8,11 +8,10 @@
 
   Audio-Accessibility Communicator
   AAC dashboard for people with temporary vocal loss
-  MirAI School of Technology — B.Tech Streamlit & AI Capstone
 ```
 
-> **Live demo:** `[PASTE YOUR STREAMLIT CLOUD / HF SPACES URL HERE]`
-> **Author:** Caleb John Daniel Balakumar (Cal)
+> **Live demo:** `    `
+> **Author:** Caleb John Daniel Balakumar 
 
 ---
 
