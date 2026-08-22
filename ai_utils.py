@@ -14,9 +14,6 @@ import streamlit as st
 from google import genai
 from google.genai import types
 
-# gemini-3.5-flash-lite: current generation, fast, cheap. Gemini 3.x models
-# use thinking_level (not thinking_budget, which is 2.5-era) to control
-# reasoning depth — "low" minimizes latency for this short-sentence task.
 MODEL_NAME = "gemini-3.5-flash-lite"
 
 PHRASE_SYSTEM_PROMPT = """You are a communication assistant embedded in an Augmentative and Alternative Communication (AAC) app 
