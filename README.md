@@ -8,14 +8,17 @@
 
   Audio-Accessibility Communicator
   AAC dashboard for people with temporary vocal loss
+ 
 ```
+
+![Audio-Accessibility Communicator](https://img.shields.io/badge/Audio--Accessibility-Communicator-d32f2f?style=for-the-badge)
 
 > **Live demo:** `    `
 > **Author:** Caleb John Daniel Balakumar 
 
 ---
 
-## $ cat about.txt
+## About
 
 A person recovering from throat surgery, a bad case of laryngitis, or
 intubation often loses their voice for days or weeks — but their need to
@@ -27,7 +30,7 @@ user points the camera at, so they can "point-and-speak" instead.
 
 ---
 
-## $ ls features/
+## Features
 
 | Feature | Rubric category it targets |
 |---|---|
@@ -42,7 +45,7 @@ user points the camera at, so they can "point-and-speak" instead.
 
 ---
 
-## $ cat architecture.md
+## Architecture
 
 **Data flow, in one sentence:** a button tap or form submit → (optional
 Gemini call for text/vision reasoning) → phrase string → gTTS synthesis
@@ -54,8 +57,8 @@ flowchart TD
     U["User taps a button<br/>or submits the AI form"] --> R{Which mode?}
 
     R -->|Pre-built phrase| P["Static phrase string"]
-    R -->|AI Phrase Generator| G1["Gemini 1.5 Flash<br/>system prompt: AAC sentence rewriter"]
-    R -->|Point-and-Speak| G2["Gemini 1.5 Flash Vision<br/>system prompt: scene → speakable sentence"]
+    R -->|AI Phrase Generator| G1["Gemini 3.5 Flash-Lite<br/>system prompt: AAC sentence rewriter"]
+    R -->|Point-and-Speak| G2["Gemini 3.5 Flash-Lite Vision<br/>system prompt: scene → speakable sentence"]
 
     G1 --> P
     G2 --> P
@@ -85,7 +88,7 @@ flowchart TD
 
 ---
 
-## $ ./setup.sh
+## Setup
 
 ```bash
 git clone <this-repo-url>
@@ -105,26 +108,3 @@ and Vision Assistant just fall back to an "offline mode" message instead
 of crashing, so core one-tap communication always works.
 
 ---
-
-## $ ./deploy.sh
-
-1. Push this repo to GitHub (public).
-2. Go to [share.streamlit.io](https://share.streamlit.io) → **New app** → point it at this repo, main branch, `app.py`.
-3. In **Advanced settings → Secrets**, paste:
-   ```toml
-   GEMINI_API_KEY = "your-real-key"
-   ```
-4. Deploy. Copy the live URL into this README's top line and into your LinkedIn post.
-
-*(Render or Hugging Face Spaces work the same way — set `GEMINI_API_KEY` as an
-environment variable / secret and point the entrypoint at `app.py`.)*
-
----
-
-## $ cat submission_checklist.md
-
-- [ ] Replace the live-demo URL placeholder above.
-- [ ] Push to a **public** GitHub repo.
-- [ ] LinkedIn post tagging MirAI School of Technology, linking the repo + live app.
-- [ ] Be ready to defend: why gTTS for voice but Gemini for phrasing/vision (cost, latency,
-      reliability — TTS doesn't need "intelligence", it needs to be fast and always-on).
