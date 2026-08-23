@@ -21,7 +21,7 @@
 
 ## About
 
-Whether someone is mute or recovering from throat surgery, a bad case of laryngitis, or intubation, their ability to speak may be compromised — but their need to communicate doesn't pause. This app puts massive, one-tap buttons in front of them: tap "Chest pain" or "I need water" and the phrase is spoken aloud instantly. When a pre-built phrase isn't enough, Gemini turns a rough typed idea into a clean sentence, or reads a scene the user points the camera at, so they can "point-and-speak" instead.
+Whether someone is mute or recovering from throat surgery, a bad case of laryngitis, or intubation, their ability to speak may be compromised - but their need to communicate doesn't pause. This app puts massive, one-tap buttons in front of them: tap "Chest pain" or "I need water" and the phrase is spoken aloud instantly. When a pre-built phrase isn't enough, Gemini turns a rough typed idea into a clean sentence, or reads a scene the user points the camera at, so they can "point-and-speak" instead.
 
 ---
 
